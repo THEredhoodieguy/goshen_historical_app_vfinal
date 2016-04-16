@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B3B7EFB1CC1617E005950AC /* file_handling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B7EFA1CC1617E005950AC /* file_handling.swift */; };
 		8B3B7EFD1CC16201005950AC /* beginning_text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B7EFC1CC16201005950AC /* beginning_text.swift */; };
+		8BBBDA051CC2CFEA00FC4D34 /* file_handling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDA041CC2CFEA00FC4D34 /* file_handling.swift */; };
 		B14D86161B2028A800AFF457 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14D86151B2028A800AFF457 /* AppDelegate.swift */; };
 		B14D86191B2028A800AFF457 /* json_table_view_images.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B14D86171B2028A800AFF457 /* json_table_view_images.xcdatamodeld */; };
 		B14D861B1B2028A800AFF457 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14D861A1B2028A800AFF457 /* ViewController.swift */; };
@@ -29,8 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8B3B7EFA1CC1617E005950AC /* file_handling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = file_handling.swift; path = ../../../Desktop/goshen_historical_app_v2/goshen_historical_app_v1/file_handling.swift; sourceTree = "<group>"; };
 		8B3B7EFC1CC16201005950AC /* beginning_text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beginning_text.swift; sourceTree = "<group>"; };
+		8BBBDA041CC2CFEA00FC4D34 /* file_handling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = file_handling.swift; sourceTree = "<group>"; };
 		B14D86101B2028A800AFF457 /* json_table_view_images.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = json_table_view_images.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14D86141B2028A800AFF457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B14D86151B2028A800AFF457 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			children = (
 				B14D86151B2028A800AFF457 /* AppDelegate.swift */,
 				B14D861A1B2028A800AFF457 /* ViewController.swift */,
-				8B3B7EFA1CC1617E005950AC /* file_handling.swift */,
+				8BBBDA041CC2CFEA00FC4D34 /* file_handling.swift */,
 				8B3B7EFC1CC16201005950AC /* beginning_text.swift */,
 				B14D861C1B2028A800AFF457 /* Main.storyboard */,
 				B14D861F1B2028A800AFF457 /* Images.xcassets */,
@@ -224,9 +224,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B14D861B1B2028A800AFF457 /* ViewController.swift in Sources */,
+				8BBBDA051CC2CFEA00FC4D34 /* file_handling.swift in Sources */,
 				8B3B7EFD1CC16201005950AC /* beginning_text.swift in Sources */,
 				B14D86161B2028A800AFF457 /* AppDelegate.swift in Sources */,
-				8B3B7EFB1CC1617E005950AC /* file_handling.swift in Sources */,
 				B14D86191B2028A800AFF457 /* json_table_view_images.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,18 +7,21 @@ import UIKit
 import CoreData
 import Foundation
 
+//Initial storage of data
 var big_array = Array<Array<String>>()
+//Final storage of data
+var final_array = Array<Array<Array<String>>>()
 
 var values_array = []
 
-var residential_array = Array<Array<String>>()
-var business_array = Array<Array<String>>()
+//Determines whether the commercial or residential array is being looked at
+var comm_or_res = 1
 
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //var json_data_url = "http://www.kaleidosblog.com/tutorial/json_table_view_images.json"
-    var data_url = "http://people.goshen.edu/~matthewwp/test_stuff.txt"
+    var data_url = "http://people.goshen.edu/~matthewwp/test.txt"
     var image_base_url = "http://www.kaleidosblog.com/tutorial/"
     
     
@@ -42,29 +45,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             description = add["description"] as? String
         }
     }
-	
-	/*struct datastruct
-	{
-		var imageurl:String?
-		var title:String?
-		var short_description:String?
-		var long_description:String?
-		var street_address:String?
-		var longitude:Float?
-		var latitude:Float?
-		var residential:Bool?
-		
-		init(add NSDictionary)
-		{
-			
-		}
-	}*/
     
     @IBOutlet var tableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
+		final_array.append(Array<Array<String>>())
+		final_array.append(Array<Array<String>>())
+		
         tableview.dataSource = self
         tableview.delegate = self
         
@@ -78,12 +67,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
-        let data = TableData[indexPath.row]
+        let data = final_array[comm_or_res][indexPath.row]
         
         
-        cell.textLabel?.text = data.description
+        cell.textLabel?.text = data[2]
         
-        if (data.image == nil)
+        /*if (data.image == nil)
         {
             cell.imageView?.image = UIImage(named:"image.jpg")
             load_image(image_base_url + data.imageurl!, imageview: cell.imageView!, index: indexPath.row)
@@ -91,7 +80,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         else
         {
             cell.imageView?.image = TableData[indexPath.row].image
-        }
+        }*/
         
         return cell
         
@@ -99,7 +88,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return TableData.count
+        return final_array[comm_or_res].count
     }
     
     
@@ -320,7 +309,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func extract_data(data:String)
     {
         var data_to_use = data
-        print(data_to_use)
         if (data_to_use.rangeOfString("404 Not Found") != nil) {
             
             print("Page 404'd")
@@ -346,14 +334,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         write_to_file(data_to_use)
         
-        values_array = data_to_use.characters.split { $0 == "\r\n"}.map(String.init)
+        values_array = data_to_use.characters.split { $0 == "\n"}.map(String.init)
         
         for i in values_array {
             big_array.append(i.componentsSeparatedByString("|"))
         }
-        print(big_array)
-        do_table_refresh()
+        filter_array()
     }
+	
+	func filter_array()
+	{
+		for i in big_array
+		{
+			if(i[0] == "Commercial District")
+			{
+				//If the item is a commercial district item, append it to the first array in the final_array
+				final_array[0].append(i)
+			}
+			else if(i[0].rangeOfString("Residential District") != nil)
+			{
+				//If the item is a residential district item, append it to the second array in the final_array
+				final_array[1].append(i)
+			}
+			//If the item does not fall into one of these two categories, it should not be in the final_array
+		}
+		
+		print(final_array)
+		do_table_refresh()
+	}
     
     
 }
